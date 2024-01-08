@@ -6,8 +6,22 @@ var myAtoi = function(s) {
     // let num = Number(s) // when s = "4193 with words" then return NAN
     // return num;
 
-    let num = parseInt(s)
-    return isNaN(num) ? 0 : num;
+    let num = parseInt(s);
+
+    if (isNaN(num)) {
+        return 0;
+    }
+
+    const max_int = Math.pow(2, 31) - 1;
+    const min_int = Math.pow(-2, 31);
+    
+    if (num > max_int) {
+        return max_int;
+    } else if (num < min_int) {
+        return min_int;
+    } else {
+        return num;
+    }
 };
 
 console.log(myAtoi("42"))
